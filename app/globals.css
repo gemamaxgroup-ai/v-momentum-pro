@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --background: #02010a;
+  --foreground: #f9fafb;
+  --primary: #22c1f1;
+  --primary-soft: #1b9bd8;
+  --secondary: #6366F1;
+  --border: #1f2937;
+  --card-bg: #0b1220;
+  --bg-soft: #050816;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at 20% 20%, #1f4eff 0%, #050816 40%, #02010a 70%, #02010a 100%);
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #02010a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #374151;
+}
+
+/* Estilos para los selects del dashboard */
+.vm-select option {
+  background-color: #020518; /* mismo tono que el fondo oscuro */
+  color: #f9fafb;            /* texto claro */
+}
+
+.vm-select option:disabled {
+  color: #9ca3af;            /* gris para deshabilitadas */
+}
