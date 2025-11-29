@@ -151,7 +151,7 @@ export default function OverviewClient({ site, range, refreshTrigger, onSiteChan
         </div>
       )}
 
-      {/* KPIs Section - Responsive grid que se adapta a más métricas */}
+      {/* KPIs Section - Responsive grid con 2 filas si es necesario */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {data.kpis.map((kpi) => (
           <KpiCard key={kpi.id} kpi={kpi} />

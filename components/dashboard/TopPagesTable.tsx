@@ -48,7 +48,11 @@ export default function TopPagesTable({ data }: TopPagesTableProps) {
                     {page.views.toLocaleString()}
                   </td>
                   <td className="py-3 px-2 sm:px-4 text-right text-xs sm:text-sm text-vm-textMuted">
-                    {(page.ctr * 100).toFixed(1)}%
+                    {page.ctr === 0 || isNaN(page.ctr) ? (
+                      <span className="text-vm-textMuted/60 italic">CTR unavailable (beta)</span>
+                    ) : (
+                      `${(page.ctr * 100).toFixed(1)}%`
+                    )}
                   </td>
                   <td className="py-3 px-2 sm:px-4 text-right text-xs sm:text-sm text-vm-textMuted">
                     {formatDuration(page.avgTimeSeconds)}

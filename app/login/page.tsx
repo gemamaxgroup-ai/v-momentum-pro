@@ -44,6 +44,10 @@ export default function LoginPage() {
         localStorage.setItem("vmomentum_demo_user", matchedUser.email);
       }
 
+      // Limpiar campos del formulario antes de redirigir
+      setEmail("");
+      setPassword("");
+
       // Redirigir a /app
       router.push("/app");
     } else {
@@ -52,6 +56,8 @@ export default function LoginPage() {
         "Invalid credentials. Please use one of the demo accounts provided by your administrator."
       );
       setIsSubmitting(false);
+      // Limpiar password por seguridad
+      setPassword("");
     }
   };
 
