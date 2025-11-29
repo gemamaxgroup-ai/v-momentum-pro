@@ -131,8 +131,20 @@ function formatDate(dateStr: string): string {
   return dateStr;
 }
 
-// Función formatDuration removida - no se usa actualmente
-// Si se necesita en el futuro para formatear duraciones, se puede agregar aquí
+/**
+ * Formatea duración en segundos a formato legible (ej: 125 -> "2m 5s")
+ */
+function formatDuration(seconds: number): string {
+  if (seconds < 60) {
+    return `${Math.round(seconds)}s`;
+  }
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = Math.round(seconds % 60);
+  if (remainingSeconds === 0) {
+    return `${minutes}m`;
+  }
+  return `${minutes}m ${remainingSeconds}s`;
+}
 
 /**
  * Obtiene los datos de overview desde Google Analytics 4
@@ -158,15 +170,18 @@ export async function getGa4Overview(
   try {
     const client = getAnalyticsClient();
     
-    // 1. Obtener KPIs agregados
+    // 1. Obtener KPIs agregados (incluyendo nuevas métricas)
     const [kpiResponse] = await client.runReport({
       property,
       dateRanges: [dateRange],
       metrics: [
         { name: 'totalUsers' },
+        { name: 'newUsers' },
         { name: 'sessions' },
         { name: 'screenPageViews' },
         { name: 'sessionConversionRate' },
+        { name: 'averageSessionDuration' },
+        { name: 'bounceRate' },
       ],
     });
 
@@ -174,20 +189,28 @@ export async function getGa4Overview(
     const kpiValues = kpiRow?.metricValues || [];
 
     const totalUsers = Number(kpiValues[0]?.value || 0);
-    const sessions = Number(kpiValues[1]?.value || 0);
-    const pageViews = Number(kpiValues[2]?.value || 0);
-    const conversionRate = Number(kpiValues[3]?.value || 0);
+    const newUsers = Number(kpiValues[1]?.value || 0);
+    const sessions = Number(kpiValues[2]?.value || 0);
+    const pageViews = Number(kpiValues[3]?.value || 0);
+    const conversionRate = Number(kpiValues[4]?.value || 0);
+    const avgSessionDuration = Number(kpiValues[5]?.value || 0); // en segundos
+    const bounceRate = Number(kpiValues[6]?.value || 0); // decimal (0-1)
+
+    // Calcular pages per session
+    const pagesPerSession = sessions > 0 ? pageViews / sessions : 0;
+
+    const rangeLabel = range === 'last_24_hours' ? '24h' : range === 'last_7_days' ? '7d' : '30d';
 
     const kpis: Ga4OverviewKpi[] = [
       {
         id: 'users',
-        label: `Users (${range === 'last_24_hours' ? '24h' : range === 'last_7_days' ? '7d' : '30d'})`,
+        label: `Users (${rangeLabel})`,
         value: formatNumber(totalUsers),
         delta: '', // TODO: calcular delta comparando con período anterior
       },
       {
         id: 'sessions',
-        label: `Sessions (${range === 'last_24_hours' ? '24h' : range === 'last_7_days' ? '7d' : '30d'})`,
+        label: `Sessions (${rangeLabel})`,
         value: formatNumber(sessions),
         delta: '',
       },
@@ -201,6 +224,30 @@ export async function getGa4Overview(
         id: 'conv-rate',
         label: 'Conversion rate',
         value: `${(conversionRate * 100).toFixed(1)}%`,
+        delta: '',
+      },
+      {
+        id: 'new-users',
+        label: `New users (${rangeLabel})`,
+        value: formatNumber(newUsers),
+        delta: '',
+      },
+      {
+        id: 'avg-session-duration',
+        label: `Avg. session duration (${rangeLabel})`,
+        value: formatDuration(avgSessionDuration),
+        delta: '',
+      },
+      {
+        id: 'pages-per-session',
+        label: `Pages per session (${rangeLabel})`,
+        value: pagesPerSession.toFixed(1),
+        delta: '',
+      },
+      {
+        id: 'bounce-rate',
+        label: `Bounce rate (${rangeLabel})`,
+        value: `${(bounceRate * 100).toFixed(1)}%`,
         delta: '',
       },
     ];

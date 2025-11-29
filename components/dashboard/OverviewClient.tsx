@@ -7,14 +7,22 @@ import TopPagesTable from "./TopPagesTable";
 import SuggestionsPanel from "./SuggestionsPanel";
 import { Ga4OverviewData, Ga4Site, Ga4DateRange } from "@/lib/ga4/overview";
 import { mockDashboardData } from "@/lib/mockDashboardData";
+import { getSuggestionsForSite } from "@/lib/suggestions";
 
 interface OverviewClientProps {
   site: Ga4Site;
   range: Ga4DateRange;
   refreshTrigger?: number;
+  onSiteChange?: (site: Ga4Site) => void;
 }
 
-export default function OverviewClient({ site, range, refreshTrigger }: OverviewClientProps) {
+export default function OverviewClient({ site, range, refreshTrigger, onSiteChange }: OverviewClientProps) {
+  // Notificar cambios de sitio al padre (para NotesModal)
+  useEffect(() => {
+    if (onSiteChange) {
+      onSiteChange(site);
+    }
+  }, [site, onSiteChange]);
   const [data, setData] = useState<Ga4OverviewData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -105,7 +113,7 @@ export default function OverviewClient({ site, range, refreshTrigger }: Overview
     return (
       <div className="px-4 sm:px-6 py-6 space-y-6 flex-1 overflow-y-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {[1, 2, 3, 4].map((i) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
             <div
               key={i}
               className="bg-vm-card/80 border border-vm-border rounded-xl p-6 animate-pulse"
@@ -143,7 +151,7 @@ export default function OverviewClient({ site, range, refreshTrigger }: Overview
         </div>
       )}
 
-      {/* KPIs Section */}
+      {/* KPIs Section - Responsive grid que se adapta a más métricas */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {data.kpis.map((kpi) => (
           <KpiCard key={kpi.id} kpi={kpi} />
@@ -159,8 +167,8 @@ export default function OverviewClient({ site, range, refreshTrigger }: Overview
         <TopPagesTable data={data.topPages} />
       </div>
 
-      {/* Suggestions Panel - usando mock por ahora */}
-      <SuggestionsPanel data={mockDashboardData.suggestions} />
+      {/* Suggestions Panel - usando función centralizada */}
+      <SuggestionsPanel data={getSuggestionsForSite(site, data)} />
     </div>
   );
 }

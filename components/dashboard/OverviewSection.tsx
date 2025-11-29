@@ -6,7 +6,11 @@ import OverviewClient from "./OverviewClient";
 import { Ga4Site, Ga4DateRange } from "@/lib/ga4/overview";
 import { clearAuth } from "@/lib/auth";
 
-export function OverviewSection() {
+interface OverviewSectionProps {
+  onSiteChange?: (site: Ga4Site) => void;
+}
+
+export function OverviewSection({ onSiteChange }: OverviewSectionProps) {
   const router = useRouter();
   const [site, setSite] = useState<Ga4Site>("filamentrank");
   const [range, setRange] = useState<Ga4DateRange>("last_7_days");
@@ -72,7 +76,13 @@ export function OverviewSection() {
             <select
               className="vm-select appearance-none bg-vm-card/80 border border-vm-border text-xs sm:text-sm text-vm-textMain rounded-full px-3 pr-7 py-1.5 leading-tight focus:outline-none focus:ring-2 focus:ring-vm-primary/70 focus:border-vm-primary/70 cursor-pointer"
               value={site}
-              onChange={(e) => setSite(e.target.value as Ga4Site)}
+              onChange={(e) => {
+                const newSite = e.target.value as Ga4Site;
+                setSite(newSite);
+                if (onSiteChange) {
+                  onSiteChange(newSite);
+                }
+              }}
             >
               <option value="filamentrank">FilamentRank</option>
               <option value="camprices">CamPrices</option>
@@ -116,7 +126,7 @@ export function OverviewSection() {
       </header>
 
       {/* Contenido principal - OverviewClient maneja la carga de datos */}
-      <OverviewClient site={site} range={range} refreshTrigger={refreshTrigger} />
+      <OverviewClient site={site} range={range} refreshTrigger={refreshTrigger} onSiteChange={setSite} />
     </div>
   );
 }

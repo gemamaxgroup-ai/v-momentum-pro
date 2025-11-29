@@ -1,11 +1,11 @@
-import { Suggestion } from "@/lib/mockDashboardData";
+import { Suggestion } from "@/lib/suggestions";
 
 interface SuggestionsPanelProps {
   data: Suggestion[];
 }
 
 export default function SuggestionsPanel({ data }: SuggestionsPanelProps) {
-  const impactColors = {
+  const impactColors: Record<Suggestion['severity'], string> = {
     high: "bg-red-500/20 border-red-500/50 text-red-400",
     medium: "bg-yellow-500/20 border-yellow-500/50 text-yellow-400",
     low: "bg-vm-textMuted/20 border-vm-border text-vm-textMuted",
@@ -32,15 +32,15 @@ export default function SuggestionsPanel({ data }: SuggestionsPanelProps) {
                     {suggestion.title}
                   </h4>
                   <span
-                    className={`text-xs px-2 py-0.5 rounded-full border ${impactColors[suggestion.impact]}`}
+                    className={`text-xs px-2 py-0.5 rounded-full border ${impactColors[suggestion.severity]}`}
                   >
-                    {suggestion.impact}
+                    {suggestion.severity}
                   </span>
                 </div>
                 <p className="text-xs text-vm-textMuted leading-relaxed mb-2">
                   {suggestion.description}
                 </p>
-                <span className="text-xs text-vm-textMuted">{suggestion.site}</span>
+                <span className="text-xs text-vm-textMuted capitalize">{suggestion.site}</span>
               </div>
             </div>
           </div>
