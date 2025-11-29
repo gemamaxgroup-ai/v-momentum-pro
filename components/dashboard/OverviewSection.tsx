@@ -11,6 +11,8 @@ export function OverviewSection() {
   const [site, setSite] = useState<Ga4Site>("filamentrank");
   const [range, setRange] = useState<Ga4DateRange>("last_7_days");
   const [isLoggingOut, setIsLoggingOut] = useState<boolean>(false);
+  const [refreshTrigger, setRefreshTrigger] = useState<number>(0);
+  const [isUpdating, setIsUpdating] = useState<boolean>(false);
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
@@ -28,6 +30,21 @@ export function OverviewSection() {
       clearAuth();
       router.push("/login");
     }
+  };
+
+  const handleUpdateNow = () => {
+    if (isUpdating) return; // Prevent multiple simultaneous requests
+    
+    setIsUpdating(true);
+    // Trigger refresh by incrementing refreshTrigger
+    // This will cause OverviewClient's useEffect to re-run
+    setRefreshTrigger((prev) => prev + 1);
+    
+    // Reset updating state after a reasonable delay to allow the fetch to complete
+    // The actual loading state is handled by OverviewClient
+    setTimeout(() => {
+      setIsUpdating(false);
+    }, 2000); // 2 seconds should be enough for most API calls
   };
 
   return (
@@ -79,11 +96,27 @@ export function OverviewSection() {
               ▼
             </span>
           </div>
+          
+          {/* Update Now button */}
+          <button
+            onClick={handleUpdateNow}
+            disabled={isUpdating}
+            className="px-4 py-1.5 text-xs sm:text-sm text-vm-textMain bg-vm-primary/20 border border-vm-primary/50 rounded-full hover:bg-vm-primary/30 hover:border-vm-primary/70 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+          >
+            {isUpdating ? (
+              <>
+                <span className="inline-block w-3 h-3 border-2 border-vm-primary border-t-transparent rounded-full animate-spin"></span>
+                <span>Updating...</span>
+              </>
+            ) : (
+              "Update Now"
+            )}
+          </button>
         </div>
       </header>
 
       {/* Contenido principal - OverviewClient maneja la carga de datos */}
-      <OverviewClient site={site} range={range} />
+      <OverviewClient site={site} range={range} refreshTrigger={refreshTrigger} />
     </div>
   );
 }

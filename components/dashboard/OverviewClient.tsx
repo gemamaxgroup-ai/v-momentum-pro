@@ -11,34 +11,49 @@ import { mockDashboardData } from "@/lib/mockDashboardData";
 interface OverviewClientProps {
   site: Ga4Site;
   range: Ga4DateRange;
+  refreshTrigger?: number;
 }
 
-export default function OverviewClient({ site, range }: OverviewClientProps) {
+export default function OverviewClient({ site, range, refreshTrigger }: OverviewClientProps) {
   const [data, setData] = useState<Ga4OverviewData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
 
-  useEffect(() => {
-    async function fetchData() {
-      setLoading(true);
+  async function fetchData(isManualRefresh: boolean = false) {
+    setLoading(true);
+    setError(null);
+    setShowSuccessMessage(false);
+
+    try {
+      const response = await fetch(
+        `/api/ga4/overview?site=${site}&range=${range}`,
+        { cache: "no-store" }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch GA4 data");
+      }
+
+      const ga4Data: Ga4OverviewData = await response.json();
+      setData(ga4Data);
       setError(null);
-
-      try {
-        const response = await fetch(
-          `/api/ga4/overview?site=${site}&range=${range}`,
-          { cache: "no-store" }
-        );
-
-        if (!response.ok) {
-          throw new Error("Failed to fetch GA4 data");
-        }
-
-        const ga4Data: Ga4OverviewData = await response.json();
-        setData(ga4Data);
-      } catch (err) {
-        console.error("Error fetching GA4 data:", err);
+      
+      // Mostrar mensaje de éxito solo si es una actualización manual
+      if (isManualRefresh) {
+        setShowSuccessMessage(true);
+        // Ocultar el mensaje después de 3 segundos
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 3000);
+      }
+    } catch (err) {
+      console.error("Error fetching GA4 data:", err);
+      if (isManualRefresh) {
+        setError("Update failed. Please try again.");
+      } else {
         setError("Could not load GA4 data, falling back to sample data");
-        // Fallback a datos mock
+        // Fallback a datos mock solo en carga inicial
         setData({
           kpis: mockDashboardData.kpis.map((k) => ({
             id: k.id,
@@ -58,13 +73,12 @@ export default function OverviewClient({ site, range }: OverviewClientProps) {
             avgTimeSeconds: parseDurationToSeconds(p.avgTime),
           })),
         });
-      } finally {
-        setLoading(false);
       }
+      // Mantener datos anteriores en caso de error durante actualización manual
+    } finally {
+      setLoading(false);
     }
-
-    fetchData();
-  }, [site, range]);
+  }
 
   // Función auxiliar para convertir "3m 24s" a segundos
   function parseDurationToSeconds(duration: string): number {
@@ -79,6 +93,13 @@ export default function OverviewClient({ site, range }: OverviewClientProps) {
     }
     return totalSeconds;
   }
+
+  useEffect(() => {
+    // Si refreshTrigger > 0, es una actualización manual
+    const isManualRefresh = (refreshTrigger ?? 0) > 0;
+    fetchData(isManualRefresh);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [site, range, refreshTrigger]);
 
   if (loading) {
     return (
@@ -111,8 +132,14 @@ export default function OverviewClient({ site, range }: OverviewClientProps) {
   return (
     <div className="px-4 sm:px-6 py-6 space-y-6 flex-1 overflow-y-auto">
       {error && (
-        <div className="bg-yellow-500/20 border border-yellow-500/50 rounded-lg p-3 text-xs text-yellow-400">
+        <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-3 text-xs text-red-400">
           {error}
+        </div>
+      )}
+
+      {showSuccessMessage && !error && !loading && (
+        <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-2 text-xs text-green-400 text-center">
+          Data updated successfully.
         </div>
       )}
 
