@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Ga4Site } from "@/lib/ga4/overview";
-import { Note, getNotes, saveNote, generateNoteId } from "@/lib/notes";
+import { Note, getNotes, saveNote, deleteNote, generateNoteId } from "@/lib/notes";
 
 interface NotesModalProps {
   isOpen: boolean;
@@ -126,6 +126,46 @@ export function NotesModal({ isOpen, onClose, site }: NotesModalProps) {
     } catch (error) {
       console.error("Error saving note:", error);
       setIsSaving(false);
+    }
+  };
+
+  const handleDelete = () => {
+    if (!selectedNoteId) return;
+
+    // Confirmar borrado
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this note? This action cannot be undone."
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    try {
+      // Eliminar la nota
+      const updatedNotes = deleteNote(site, selectedNoteId);
+      setNotes(updatedNotes);
+
+      // Actualizar la nota seleccionada
+      if (updatedNotes.length > 0) {
+        // Seleccionar la más reciente (primera del array ordenado)
+        setSelectedNoteId(updatedNotes[0].id);
+      } else {
+        // No quedan notas: crear una nueva vacía
+        const today = new Date();
+        const newEmptyNote: Note = {
+          id: generateNoteId(),
+          date: today.toISOString().split("T")[0],
+          content: "",
+        };
+        
+        // Guardar la nueva nota vacía
+        const notesWithEmpty = saveNote(site, newEmptyNote);
+        setNotes(notesWithEmpty);
+        setSelectedNoteId(newEmptyNote.id);
+      }
+    } catch (error) {
+      console.error("Error deleting note:", error);
     }
   };
 
@@ -272,20 +312,29 @@ export function NotesModal({ isOpen, onClose, site }: NotesModalProps) {
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-vm-border">
+            <div className="flex items-center justify-between px-6 py-4 border-t border-vm-border">
               <button
-                onClick={onClose}
-                className="px-4 py-2 text-sm text-vm-textMuted hover:text-vm-textMain transition-colors"
+                onClick={handleDelete}
+                disabled={!selectedNoteId}
+                className="px-4 py-2 text-sm font-medium text-red-400 hover:text-red-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Close
+                Delete note
               </button>
-              <button
-                onClick={handleSave}
-                disabled={isSaving || !noteContent.trim()}
-                className="px-6 py-2 text-sm font-medium text-white bg-vm-primary rounded-full hover:bg-vm-primarySoft transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSaving ? "Saving..." : selectedNoteId ? "Update note" : "Save note"}
-              </button>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={onClose}
+                  className="px-4 py-2 text-sm text-vm-textMuted hover:text-vm-textMain transition-colors"
+                >
+                  Close
+                </button>
+                <button
+                  onClick={handleSave}
+                  disabled={isSaving || !noteContent.trim()}
+                  className="px-6 py-2 text-sm font-medium text-white bg-vm-primary rounded-full hover:bg-vm-primarySoft transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSaving ? "Saving..." : selectedNoteId ? "Update note" : "Save note"}
+                </button>
+              </div>
             </div>
           </div>
         </div>

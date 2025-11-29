@@ -80,7 +80,8 @@ export function deleteNote(site: Ga4Site, noteId: string): Note[] {
   const notes = getNotes(site);
   const filtered = notes.filter((n) => n.id !== noteId);
   saveNotes(site, filtered);
-  return filtered;
+  // Retornar notas ordenadas (más reciente primero)
+  return filtered.sort((a, b) => b.date.localeCompare(a.date));
 }
 
 /**
