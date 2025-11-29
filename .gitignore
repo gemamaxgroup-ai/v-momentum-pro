@@ -49,3 +49,9 @@ next-env.d.ts
 
 .vercel
 .env*.local
+
+# alert system data files
+/data/
+
+# alert system logs
+/logs/
