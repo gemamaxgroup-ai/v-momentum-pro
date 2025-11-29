@@ -1,12 +1,34 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import OverviewClient from "./OverviewClient";
 import { Ga4Site, Ga4DateRange } from "@/lib/ga4/overview";
+import { clearAuth } from "@/lib/auth";
 
 export function OverviewSection() {
+  const router = useRouter();
   const [site, setSite] = useState<Ga4Site>("filamentrank");
   const [range, setRange] = useState<Ga4DateRange>("last_7_days");
+  const [isLoggingOut, setIsLoggingOut] = useState<boolean>(false);
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    try {
+      // Clear client-side auth
+      clearAuth();
+      
+      // Call logout API (idempotent)
+      await fetch("/api/auth/logout", { method: "POST" });
+      
+      // Redirect to login
+      router.push("/login");
+    } catch {
+      // Even if API fails, clear local auth and redirect
+      clearAuth();
+      router.push("/login");
+    }
+  };
 
   return (
     <div className="flex flex-col h-full">
@@ -18,7 +40,16 @@ export function OverviewSection() {
             FilamentRank & CamPrices performance at a glance.
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          {/* Logout button */}
+          <button
+            onClick={handleLogout}
+            disabled={isLoggingOut}
+            className="px-4 py-1.5 text-xs sm:text-sm text-vm-textMuted hover:text-vm-textMain border border-vm-border rounded-full hover:border-vm-primary/60 hover:bg-vm-card/40 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isLoggingOut ? "Logging out..." : "Log out"}
+          </button>
+          
           {/* Selector de sitio */}
           <div className="relative inline-flex items-center">
             <select
