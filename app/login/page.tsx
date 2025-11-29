@@ -133,19 +133,29 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <div className="mt-6 pt-6 border-t border-slate-700">
-            <p className="text-xs text-slate-500 text-center">
-              For demo access you can use:
-              <br />
-              <span className="text-slate-400">
-                etroco@gmail.com / Welc0me1234
-              </span>
-              <br />
-              <span className="text-slate-400">
-                lsantolalla74@gmail.com / Welc0me1234
-              </span>
-            </p>
-          </div>
+          {process.env.NEXT_PUBLIC_SHOW_DEMO_CREDENTIALS === "true" && (
+            <div className="mt-6 pt-6 border-t border-slate-700">
+              <p className="text-xs text-slate-500 text-center">
+                For demo access you can use:
+                <br />
+                <span className="text-slate-400">
+                  etroco@gmail.com / Welc0me1234
+                </span>
+                <br />
+                <span className="text-slate-400">
+                  lsantolalla74@gmail.com / Welc0me1234
+                </span>
+              </p>
+            </div>
+          )}
+
+          {process.env.NEXT_PUBLIC_SHOW_DEMO_CREDENTIALS !== "true" && (
+            <div className="mt-6 pt-6 border-t border-slate-700">
+              <p className="text-xs text-slate-400 text-center">
+                Use your V-Momentum-Pro account to log in.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

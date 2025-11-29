@@ -75,7 +75,7 @@ export function AlertsSection({ site }: AlertsSectionProps) {
                   Condition
                 </th>
                 <th className="px-4 py-3 text-center text-xs font-semibold text-vm-textMuted uppercase tracking-wider">
-                  Enabled
+                  Status
                 </th>
               </tr>
             </thead>
@@ -102,18 +102,16 @@ export function AlertsSection({ site }: AlertsSectionProps) {
                   <td className="px-4 py-4 text-center">
                     <button
                       onClick={() => handleToggle(alert.id, !alert.enabled)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-vm-primary/50 focus:ring-offset-2 focus:ring-offset-vm-card ${
-                        alert.enabled ? "bg-vm-primary" : "bg-vm-border"
+                      className={`inline-flex items-center justify-center px-3 py-1.5 rounded-full text-xs font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-vm-primary/50 focus:ring-offset-2 focus:ring-offset-vm-card ${
+                        alert.enabled
+                          ? "bg-vm-primary text-white"
+                          : "bg-vm-border text-vm-textMuted"
                       }`}
                       aria-label={`Toggle ${alert.name} alert`}
                       role="switch"
                       aria-checked={alert.enabled}
                     >
-                      <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                          alert.enabled ? "translate-x-6" : "translate-x-1"
-                        }`}
-                      />
+                      {alert.enabled ? "On" : "Off"}
                     </button>
                   </td>
                 </tr>
