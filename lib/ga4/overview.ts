@@ -146,6 +146,7 @@ export async function getGa4Overview(
   const propertyId = getGa4PropertyId(site);
   
   if (!propertyId) {
+    console.error("[GA4 DEBUG] GA4_PROPERTY_ID_FILAMENTRANK value:", process.env.GA4_PROPERTY_ID_FILAMENTRANK ?? "<undefined>");
     throw new Error(
       `GA4 property id not configured. Set GA4_PROPERTY_ID_${site.toUpperCase()} in .env.local`
     );
