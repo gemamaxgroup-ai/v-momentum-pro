@@ -31,17 +31,58 @@ export interface Ga4OverviewData {
 }
 
 /**
- * Crea el cliente de Analytics Data API usando credenciales desde variables de entorno
- * 
- * Lee GA4_SERVICE_ACCOUNT_JSON que debe contener el JSON completo del Service Account
- * como una cadena de texto (sin saltos de línea, o con \n escapados).
+ * Carga el JSON de Service Account desde archivo o variable de entorno
  */
-function createAnalyticsClient() {
-  const ga4Json = process.env.GA4_SERVICE_ACCOUNT_JSON;
+function loadServiceAccountJson(): string {
+  let jsonPath = process.env.GA4_SERVICE_ACCOUNT_JSON;
   
-  if (!ga4Json) {
+  if (!jsonPath) {
     throw new Error('GA4_SERVICE_ACCOUNT_JSON no está configurada. Configúrala en Vercel o .env.local');
   }
+
+  // Remover comillas simples o dobles al inicio y final si existen
+  jsonPath = jsonPath.trim();
+  if ((jsonPath.startsWith("'") && jsonPath.endsWith("'")) || 
+      (jsonPath.startsWith('"') && jsonPath.endsWith('"'))) {
+    jsonPath = jsonPath.slice(1, -1);
+  }
+
+  // Si es una ruta de archivo (empieza con ./ o / o contiene \ y NO empieza con {)
+  if ((jsonPath.startsWith('./') || jsonPath.startsWith('/') || jsonPath.includes('\\')) && 
+      !jsonPath.startsWith('{')) {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const fs = require('fs');
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const path = require('path');
+      const fullPath = path.isAbsolute(jsonPath) 
+        ? jsonPath 
+        : path.join(process.cwd(), jsonPath);
+      
+      if (!fs.existsSync(fullPath)) {
+        throw new Error(`Archivo de Service Account no encontrado: ${fullPath}`);
+      }
+      
+      const content = fs.readFileSync(fullPath, 'utf-8');
+      return content;
+    } catch (error) {
+      throw new Error(`Error leyendo archivo de Service Account: ${(error as Error).message}`);
+    }
+  }
+  
+  // Si no es una ruta, asumir que es el JSON completo en la variable
+  return jsonPath;
+}
+
+/**
+ * Crea el cliente de Analytics Data API usando credenciales desde variables de entorno
+ * 
+ * Lee GA4_SERVICE_ACCOUNT_JSON que puede ser:
+ * - Una ruta a archivo JSON (ej: ./secrets/ga4-sa.json)
+ * - El JSON completo como string (para Vercel)
+ */
+function createAnalyticsClient() {
+  const ga4Json = loadServiceAccountJson();
 
   try {
     const credentials = JSON.parse(ga4Json);
@@ -73,7 +114,7 @@ function createAnalyticsClient() {
 // Cliente de Analytics Data API (instancia única, se crea solo si las credenciales están disponibles)
 let analyticsDataClient: BetaAnalyticsDataClient | null = null;
 
-function getAnalyticsClient(): BetaAnalyticsDataClient {
+export function getAnalyticsClient(): BetaAnalyticsDataClient {
   if (!analyticsDataClient) {
     analyticsDataClient = createAnalyticsClient();
   }

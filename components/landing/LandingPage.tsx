@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#04021a] via-[#050819] to-[#000000] text-white">
+    <div className="w-full text-white">
       <div className="w-full max-w-7xl mx-auto px-6 pt-28 pb-28 flex flex-col gap-10">
         {/* NAV SUPERIOR */}
         <header className="flex items-center justify-between gap-4">

@@ -27,11 +27,6 @@
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at 20% 20%, #1f4eff 0%, #050816 40%, #02010a 70%, #02010a 100%);
-  background-attachment: fixed;
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
-  min-height: 100vh;
 }
 
 /* Scrollbar personalizado */
