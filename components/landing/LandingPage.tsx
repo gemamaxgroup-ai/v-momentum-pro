@@ -57,7 +57,7 @@ export default function LandingPage() {
                   </p>
 
                   {/* Título principal */}
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">
+                  <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
                     Run your websites on one intelligent platform.
                   </h1>
 
@@ -66,25 +66,6 @@ export default function LandingPage() {
                     V-Momentum-Pro unifica tráfico, rendimiento de contenido, monetización y salud
                     del sistema en un solo dashboard claro y accionable.
                   </p>
-
-                  {/* Botones */}
-                  <div className="mt-2 flex flex-wrap items-center justify-center md:justify-start gap-4">
-                    {/* Botón principal */}
-                    <Link
-                      href="/app"
-                      className="inline-flex items-center justify-center rounded-full bg-sky-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-500/40 hover:shadow-sky-500/60 transition"
-                    >
-                      Start for free
-                    </Link>
-
-                    {/* Botón secundario */}
-                    <Link
-                      href="/login"
-                      className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/5 transition"
-                    >
-                      Log in
-                    </Link>
-                  </div>
                 </div>
               </div>
 
@@ -181,7 +162,7 @@ export default function LandingPage() {
                       Up to 2 websites. Basic analytics. 7-day data retention.
                     </p>
                     <ul className="mt-4 space-y-1 text-sm text-vm-textMuted">
-                      <li>✓ Up to 2 websites</li>
+                      <li>✓ 2 websites included</li>
                       <li>✓ Basic analytics</li>
                       <li>✓ 7-day data retention</li>
                     </ul>
