@@ -181,7 +181,7 @@ export default function LandingPage() {
                     href="/register"
                     className="mt-6 w-full rounded-full border border-vm-border px-4 py-2 text-sm font-medium text-vm-textMain hover:bg-white/5 transition text-center block"
                   >
-                    Get started
+                    Start free trial
                   </Link>
                 </div>
 
@@ -221,7 +221,7 @@ export default function LandingPage() {
                     href="/register"
                     className="mt-6 w-full rounded-full border border-vm-border px-4 py-2 text-sm font-medium text-vm-textMain hover:bg-white/5 transition text-center block"
                   >
-                    Start free trial
+                    Get started
                   </Link>
                 </div>
               </div>
