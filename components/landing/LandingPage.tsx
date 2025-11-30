@@ -27,9 +27,10 @@ export default function LandingPage() {
           </nav>
         </header>
 
-        {/* BLOQUE 1 – HERO PRINCIPAL */}
-        <section className="w-full pt-24 pb-16">
-          <div className="w-full max-w-6xl mx-auto px-6">
+        {/* BLOQUE 1 Y 2 – HERO + TARJETA DE MÉTRICAS */}
+        <section className="flex min-h-[70vh] w-full items-center justify-center">
+          <div className="w-full max-w-6xl mx-4">
+            {/* BLOQUE 1 – HERO PRINCIPAL */}
             {/* Card exterior con borde de degradado estilo SaaS */}
             <div className="w-full max-w-5xl mx-auto rounded-[32px] bg-gradient-to-r from-[#1B63F2] via-[#4B5CFF] to-[#8B5CFF] p-[1px] shadow-[0_40px_120px_rgba(0,0,0,0.65)]">
               {/* Interior oscuro */}
@@ -70,44 +71,41 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* HERO + DASHBOARD PREVIEW */}
-        <section className="flex flex-col gap-6 items-center text-center w-full">
-          {/* Tarjeta grande del dashboard de ejemplo */}
-          <div className="w-full rounded-3xl bg-vm-panel/80 border border-vm-border/70 shadow-[0_20px_60px_rgba(0,0,0,0.45)] overflow-hidden backdrop-blur-md">
-            <div className="px-6 py-4 border-b border-vm-border/50 flex items-center justify-between text-xs text-vm-textMuted uppercase tracking-[0.2em]">
-              <span>FilamentRank & CamPrices overview</span>
-              <span>Last 7 days</span>
-            </div>
-            <div className="px-6 py-6 space-y-4">
-              {/* Métricas de cabecera */}
-              <div className="grid grid-cols-3 gap-4 text-sm">
-                <div>
-                  <p className="text-vm-textMuted">Users (24h)</p>
-                  <p className="text-2xl font-semibold text-vm-textMain">12.4K</p>
-                  <p className="text-xs text-emerald-400">+12.5%</p>
-                </div>
-                <div>
-                  <p className="text-vm-textMuted">Sessions (24h)</p>
-                  <p className="text-2xl font-semibold text-vm-textMain">18.7K</p>
-                  <p className="text-xs text-emerald-400">+8.3%</p>
-                </div>
-                <div>
-                  <p className="text-vm-textMuted">Estimated revenue</p>
-                  <p className="text-2xl font-semibold text-vm-textMain">$4.2K</p>
-                  <p className="text-xs text-emerald-400">+15.2%</p>
-                </div>
+            {/* BLOQUE 2 – TARJETA DE MÉTRICAS */}
+            <div className="mt-10 w-full rounded-3xl bg-vm-panel/80 border border-vm-border/70 shadow-[0_20px_60px_rgba(0,0,0,0.45)] overflow-hidden backdrop-blur-md">
+              <div className="px-6 py-4 border-b border-vm-border/50 flex items-center justify-between text-xs text-vm-textMuted uppercase tracking-[0.2em]">
+                <span>FilamentRank & CamPrices overview</span>
+                <span>Last 7 days</span>
               </div>
-              {/* "Pastillas" de categorías */}
-              <div className="mt-4 rounded-2xl bg-gradient-to-r from-[#0F5FD1] via-[#5F4DDC] to-[#A86AE9] p-[1px]">
-                <div className="flex flex-col gap-4 rounded-2xl bg-vm-panel/95 px-4 py-4 md:flex-row md:items-center md:justify-between">
-                  <div className="h-10 rounded-full bg-white/10 flex-1" />
-                  <div className="h-10 rounded-full bg-white/10 flex-1" />
-                  <div className="h-10 rounded-full bg-white/10 flex-1" />
-                  <div className="h-10 rounded-full bg-white/10 flex-1" />
-                  <div className="h-10 rounded-full bg-white/10 flex-1" />
+              <div className="px-6 py-6 space-y-4">
+                {/* Métricas de cabecera */}
+                <div className="grid grid-cols-3 gap-4 text-sm">
+                  <div>
+                    <p className="text-vm-textMuted">Users (24h)</p>
+                    <p className="text-2xl font-semibold text-vm-textMain">12.4K</p>
+                    <p className="text-xs text-emerald-400">+12.5%</p>
+                  </div>
+                  <div>
+                    <p className="text-vm-textMuted">Sessions (24h)</p>
+                    <p className="text-2xl font-semibold text-vm-textMain">18.7K</p>
+                    <p className="text-xs text-emerald-400">+8.3%</p>
+                  </div>
+                  <div>
+                    <p className="text-vm-textMuted">Estimated revenue</p>
+                    <p className="text-2xl font-semibold text-vm-textMain">$4.2K</p>
+                    <p className="text-xs text-emerald-400">+15.2%</p>
+                  </div>
+                </div>
+                {/* "Pastillas" de categorías */}
+                <div className="mt-4 rounded-2xl bg-gradient-to-r from-[#0F5FD1] via-[#5F4DDC] to-[#A86AE9] p-[1px]">
+                  <div className="flex flex-col gap-4 rounded-2xl bg-vm-panel/95 px-4 py-4 md:flex-row md:items-center md:justify-between">
+                    <div className="h-10 rounded-full bg-white/10 flex-1" />
+                    <div className="h-10 rounded-full bg-white/10 flex-1" />
+                    <div className="h-10 rounded-full bg-white/10 flex-1" />
+                    <div className="h-10 rounded-full bg-white/10 flex-1" />
+                    <div className="h-10 rounded-full bg-white/10 flex-1" />
+                  </div>
                 </div>
               </div>
             </div>
