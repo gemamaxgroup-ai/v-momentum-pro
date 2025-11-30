@@ -31,7 +31,7 @@ export default function LandingPage() {
         <section className="w-full pt-24 pb-16">
           <div className="w-full max-w-6xl mx-auto px-6">
             {/* Card exterior con borde de degradado estilo SaaS */}
-            <div className="rounded-[32px] bg-gradient-to-r from-[#1B63F2] via-[#4B5CFF] to-[#8B5CFF] p-[1px] shadow-[0_40px_120px_rgba(0,0,0,0.65)]">
+            <div className="w-full max-w-5xl mx-auto rounded-[32px] bg-gradient-to-r from-[#1B63F2] via-[#4B5CFF] to-[#8B5CFF] p-[1px] shadow-[0_40px_120px_rgba(0,0,0,0.65)]">
               {/* Interior oscuro */}
               <div className="rounded-[30px] bg-[#050819]/95 px-8 py-12 md:px-12 md:py-16 flex flex-col gap-8 items-center text-center md:items-start md:text-left">
                 {/* Etiqueta superior */}
