@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function LandingPage() {
   return (
     <div className="w-full text-white">
-      <div className="w-full max-w-5xl mx-auto px-6 pt-28 pb-28 flex flex-col gap-10">
+      <div className="w-full px-6 pt-28 pb-28 flex flex-col gap-10">
         {/* NAV SUPERIOR */}
         <header className="flex items-center justify-between gap-4">
           <Link href="/" className="text-xs tracking-[0.35em] text-sky-400 uppercase hover:text-sky-300 transition-colors">
@@ -28,8 +28,8 @@ export default function LandingPage() {
         </header>
 
         {/* BLOQUE 1 Y 2 – HERO + TARJETA DE MÉTRICAS + FEATURES */}
-        <section className="w-full pt-24 pb-16">
-          <div className="w-full max-w-6xl mx-auto px-6 space-y-10">
+        <section className="w-full">
+          <div className="w-full max-w-6xl mx-auto space-y-8">
             {/* BLOQUE 1 – HERO PRINCIPAL */}
             {/* Card exterior con borde de degradado estilo SaaS */}
             <div className="w-full rounded-[32px] bg-gradient-to-r from-[#1B63F2] via-[#4B5CFF] to-[#8B5CFF] p-[1px] shadow-[0_40px_120px_rgba(0,0,0,0.65)]">
@@ -73,7 +73,7 @@ export default function LandingPage() {
             </div>
 
             {/* BLOQUE 2 – TARJETA DE MÉTRICAS */}
-            <div className="w-full rounded-3xl bg-vm-panel/80 border border-vm-border/70 shadow-[0_20px_60px_rgba(0,0,0,0.45)] overflow-hidden backdrop-blur-md">
+            <div className="w-full rounded-3xl bg-black/60 border border-white/40 overflow-hidden">
               <div className="px-6 py-4 border-b border-vm-border/50 flex items-center justify-between text-xs text-vm-textMuted uppercase tracking-[0.2em]">
                 <span>FilamentRank & CamPrices overview</span>
                 <span>Last 7 days</span>
@@ -141,14 +141,16 @@ export default function LandingPage() {
         </section>
 
         {/* Bloque Simple pricing */}
-        <section id="pricing" className="pt-4">
-          <h2 className="text-center text-2xl sm:text-3xl font-semibold text-vm-textMain">
-            Simple pricing
-          </h2>
-          <p className="mt-2 text-center text-sm text-vm-textMuted">
-            Choose the plan that fits your needs. Start free and scale as you grow.
-          </p>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <section id="pricing" className="pt-10">
+          <div className="w-full max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl sm:text-3xl font-semibold text-vm-textMain">
+              Simple pricing
+            </h2>
+            <p className="mt-2 text-sm text-vm-textMuted">
+              Choose the plan that fits your needs. Start free and scale as you grow.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-6 md:grid-cols-2 w-full max-w-4xl mx-auto">
             {/* Plan Free */}
             <div className="rounded-3xl border border-vm-border bg-vm-panel/80 p-6 flex flex-col justify-between">
               <div>
