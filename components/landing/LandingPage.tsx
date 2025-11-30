@@ -27,12 +27,12 @@ export default function LandingPage() {
           </nav>
         </header>
 
-        {/* BLOQUE 1 Y 2 – HERO + TARJETA DE MÉTRICAS */}
-        <section className="flex min-h-[70vh] w-full items-center justify-center">
-          <div className="w-full max-w-6xl mx-4">
+        {/* BLOQUE 1 Y 2 – HERO + TARJETA DE MÉTRICAS + FEATURES */}
+        <section className="w-full pt-24 pb-16">
+          <div className="w-full max-w-6xl mx-auto px-6 space-y-10">
             {/* BLOQUE 1 – HERO PRINCIPAL */}
             {/* Card exterior con borde de degradado estilo SaaS */}
-            <div className="w-full max-w-5xl mx-auto rounded-[32px] bg-gradient-to-r from-[#1B63F2] via-[#4B5CFF] to-[#8B5CFF] p-[1px] shadow-[0_40px_120px_rgba(0,0,0,0.65)]">
+            <div className="w-full rounded-[32px] bg-gradient-to-r from-[#1B63F2] via-[#4B5CFF] to-[#8B5CFF] p-[1px] shadow-[0_40px_120px_rgba(0,0,0,0.65)]">
               {/* Interior oscuro */}
               <div className="rounded-[30px] bg-[#050819]/95 px-8 py-12 md:px-12 md:py-16 flex flex-col gap-8 items-center text-center md:items-start md:text-left">
                 {/* Etiqueta superior */}
@@ -73,7 +73,7 @@ export default function LandingPage() {
             </div>
 
             {/* BLOQUE 2 – TARJETA DE MÉTRICAS */}
-            <div className="mt-10 w-full rounded-3xl bg-vm-panel/80 border border-vm-border/70 shadow-[0_20px_60px_rgba(0,0,0,0.45)] overflow-hidden backdrop-blur-md">
+            <div className="w-full rounded-3xl bg-vm-panel/80 border border-vm-border/70 shadow-[0_20px_60px_rgba(0,0,0,0.45)] overflow-hidden backdrop-blur-md">
               <div className="px-6 py-4 border-b border-vm-border/50 flex items-center justify-between text-xs text-vm-textMuted uppercase tracking-[0.2em]">
                 <span>FilamentRank & CamPrices overview</span>
                 <span>Last 7 days</span>
@@ -109,35 +109,33 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
 
-        {/* Sección Features */}
-        <section id="features" className="pt-4">
-          <div className="grid gap-6 md:grid-cols-4">
-            <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
-              <h3 className="font-semibold mb-2 text-vm-textMain">Traffic</h3>
-              <p className="text-xs text-vm-textMuted">
-                Comprehensive analytics for all your websites. See what&apos;s driving visitors and optimize your content strategy.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
-              <h3 className="font-semibold mb-2 text-vm-textMain">Monetization</h3>
-              <p className="text-xs text-vm-textMuted">
-                Track revenue, conversions, and optimize your monetization strategy with real-time insights and recommendations.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
-              <h3 className="font-semibold mb-2 text-vm-textMain">Alerts</h3>
-              <p className="text-xs text-vm-textMuted">
-                Get notified about important changes, anomalies, and opportunities across all your properties instantly.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
-              <h3 className="font-semibold mb-2 text-vm-textMain">Suggestions</h3>
-              <p className="text-xs text-vm-textMuted">
-                AI-powered recommendations to improve performance, revenue, and user engagement based on your data patterns.
-              </p>
+            {/* Sección Features */}
+            <div id="features" className="grid gap-6 md:grid-cols-4">
+              <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
+                <h3 className="font-semibold mb-2 text-vm-textMain">Traffic</h3>
+                <p className="text-xs text-vm-textMuted">
+                  Comprehensive analytics for all your websites. See what&apos;s driving visitors and optimize your content strategy.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
+                <h3 className="font-semibold mb-2 text-vm-textMain">Monetization</h3>
+                <p className="text-xs text-vm-textMuted">
+                  Track revenue, conversions, and optimize your monetization strategy with real-time insights and recommendations.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
+                <h3 className="font-semibold mb-2 text-vm-textMain">Alerts</h3>
+                <p className="text-xs text-vm-textMuted">
+                  Get notified about important changes, anomalies, and opportunities across all your properties instantly.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
+                <h3 className="font-semibold mb-2 text-vm-textMain">Suggestions</h3>
+                <p className="text-xs text-vm-textMuted">
+                  AI-powered recommendations to improve performance, revenue, and user engagement based on your data patterns.
+                </p>
+              </div>
             </div>
           </div>
         </section>
