@@ -219,7 +219,7 @@ export default function LandingPage() {
                   </div>
                   <Link
                     href="/register"
-                    className="mt-6 w-full rounded-full bg-white text-sm font-semibold text-vm-primary py-2 hover:bg-vm-primary hover:text-white transition text-center block"
+                    className="mt-6 w-full rounded-full border border-vm-border px-4 py-2 text-sm font-medium text-vm-textMain hover:bg-white/5 transition text-center block"
                   >
                     Start free trial
                   </Link>
