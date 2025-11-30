@@ -121,37 +121,39 @@ export default function LandingPage() {
 
         {/* Sección Features */}
         <section id="features" className="pt-4">
-          <div className="grid gap-6 md:grid-cols-4">
-            <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
-              <h3 className="font-semibold mb-2 text-vm-textMain">Traffic</h3>
-              <p className="text-xs text-vm-textMuted">
-                Comprehensive analytics for all your websites. See what&apos;s driving visitors and optimize your content strategy.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
-              <h3 className="font-semibold mb-2 text-vm-textMain">Monetization</h3>
-              <p className="text-xs text-vm-textMuted">
-                Track revenue, conversions, and optimize your monetization strategy with real-time insights and recommendations.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
-              <h3 className="font-semibold mb-2 text-vm-textMain">Alerts</h3>
-              <p className="text-xs text-vm-textMuted">
-                Get notified about important changes, anomalies, and opportunities across all your properties instantly.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
-              <h3 className="font-semibold mb-2 text-vm-textMain">Suggestions</h3>
-              <p className="text-xs text-vm-textMuted">
-                AI-powered recommendations to improve performance, revenue, and user engagement based on your data patterns.
-              </p>
+          <div className="w-full max-w-6xl mx-auto">
+            <div className="grid gap-6 md:grid-cols-4">
+              <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
+                <h3 className="font-semibold mb-2 text-vm-textMain">Traffic</h3>
+                <p className="text-xs text-vm-textMuted">
+                  Comprehensive analytics for all your websites. See what&apos;s driving visitors and optimize your content strategy.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
+                <h3 className="font-semibold mb-2 text-vm-textMain">Monetization</h3>
+                <p className="text-xs text-vm-textMuted">
+                  Track revenue, conversions, and optimize your monetization strategy with real-time insights and recommendations.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
+                <h3 className="font-semibold mb-2 text-vm-textMain">Alerts</h3>
+                <p className="text-xs text-vm-textMuted">
+                  Get notified about important changes, anomalies, and opportunities across all your properties instantly.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-vm-border/50 bg-vm-panel/60 p-4 text-sm">
+                <h3 className="font-semibold mb-2 text-vm-textMain">Suggestions</h3>
+                <p className="text-xs text-vm-textMuted">
+                  AI-powered recommendations to improve performance, revenue, and user engagement based on your data patterns.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Bloque Simple pricing */}
         <section id="pricing" className="pt-10">
-          <div className="w-full max-w-4xl mx-auto text-center">
+          <div className="w-full max-w-6xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl font-semibold text-vm-textMain">
               Simple pricing
             </h2>
@@ -159,7 +161,7 @@ export default function LandingPage() {
               Choose the plan that fits your needs. Start free and scale as you grow.
             </p>
           </div>
-          <div className="mt-8 grid gap-6 md:grid-cols-2 w-full max-w-4xl mx-auto">
+          <div className="mt-8 w-full max-w-6xl mx-auto grid gap-6 md:grid-cols-2">
             {/* Plan Free */}
             <div className="rounded-3xl border border-vm-border bg-vm-panel/80 p-6 flex flex-col justify-between">
               <div>
