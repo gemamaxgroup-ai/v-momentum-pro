@@ -27,7 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans min-h-screen`}
       >
-        <div className="min-h-screen bg-gradient-to-br from-[#0A0F2A] via-[#050B19] to-[#000000] text-white">
+        <div className="min-h-screen bg-gradient-to-b from-[#04021a] via-[#050819] to-[#000000] text-white">
           {children}
         </div>
       </body>

@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function LandingPage() {
   return (
     <div className="w-full text-white">
-      <div className="w-full max-w-7xl mx-auto px-6 pt-28 pb-28 flex flex-col gap-10">
+      <div className="w-full max-w-5xl mx-auto px-6 pt-28 pb-28 flex flex-col gap-10">
         {/* NAV SUPERIOR */}
         <header className="flex items-center justify-between gap-4">
           <Link href="/" className="text-xs tracking-[0.35em] text-sky-400 uppercase hover:text-sky-300 transition-colors">
