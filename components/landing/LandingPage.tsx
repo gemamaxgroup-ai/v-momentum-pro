@@ -149,7 +149,19 @@ export default function LandingPage() {
               </div>
               <div className="mt-8 grid gap-6 md:grid-cols-2">
                 {/* Plan Free */}
-                <div className="rounded-3xl border border-vm-border bg-vm-panel/80 p-6 flex flex-col justify-between">
+                <div
+                  className="
+                    relative
+                    flex flex-col justify-between
+                    h-full
+                    rounded-3xl
+                    border border-white/20
+                    bg-gradient-to-br from-[#050816] via-[#080C24] to-[#151B3D]
+                    px-8 py-8
+                    shadow-[0_0_40px_rgba(26,116,255,0.18)]
+                    text-white
+                  "
+                >
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.25em] text-vm-textMuted text-center">
                       Free
@@ -175,34 +187,43 @@ export default function LandingPage() {
                 </div>
 
                 {/* Plan Pro */}
-                <div className="rounded-3xl bg-gradient-to-r from-[#1C6DF2] via-[#5C4EF6] to-[#B56DF5] p-[1px]">
-                  <div className="h-full rounded-3xl bg-vm-panel/95 p-6 flex flex-col justify-between">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-vm-textMuted text-center">
-                        Pro
-                      </p>
-                      <p className="mt-3 text-center text-4xl font-semibold text-white">
-                        $29
-                      </p>
-                      <p className="mt-2 text-center text-sm text-vm-textMuted">
-                        Unlimited websites. Advanced analytics. 90-day data retention,
-                        AI suggestions and priority support.
-                      </p>
-                      <ul className="mt-4 space-y-1 text-sm text-vm-textMuted">
-                        <li>✓ Unlimited websites</li>
-                        <li>✓ Advanced analytics</li>
-                        <li>✓ 90-day data retention</li>
-                        <li>✓ AI-powered suggestions</li>
-                        <li>✓ Priority support</li>
-                      </ul>
-                    </div>
-                    <Link
-                      href="/register"
-                      className="mt-6 w-full rounded-full bg-white text-sm font-semibold text-vm-primary py-2 hover:bg-vm-primary hover:text-white transition text-center block"
-                    >
-                      Start free trial
-                    </Link>
+                <div
+                  className="
+                    relative
+                    flex flex-col justify-between
+                    h-full
+                    rounded-3xl
+                    bg-gradient-to-r from-[#1A74FF] to-[#C869FF]
+                    px-8 py-8
+                    shadow-[0_0_45px_rgba(200,105,255,0.35)]
+                    text-white
+                  "
+                >
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-vm-textMuted text-center">
+                      Pro
+                    </p>
+                    <p className="mt-3 text-center text-4xl font-semibold text-white">
+                      $29
+                    </p>
+                    <p className="mt-2 text-center text-sm text-vm-textMuted">
+                      Unlimited websites. Advanced analytics. 90-day data retention,
+                      AI suggestions and priority support.
+                    </p>
+                    <ul className="mt-4 space-y-1 text-sm text-vm-textMuted">
+                      <li>✓ Unlimited websites</li>
+                      <li>✓ Advanced analytics</li>
+                      <li>✓ 90-day data retention</li>
+                      <li>✓ AI-powered suggestions</li>
+                      <li>✓ Priority support</li>
+                    </ul>
                   </div>
+                  <Link
+                    href="/register"
+                    className="mt-6 w-full rounded-full bg-white text-sm font-semibold text-vm-primary py-2 hover:bg-vm-primary hover:text-white transition text-center block"
+                  >
+                    Start free trial
+                  </Link>
                 </div>
               </div>
             </div>
