@@ -8,35 +8,37 @@ export default function LandingPage() {
       <div className="w-full px-6 pt-28 pb-28 flex flex-col gap-10">
         {/* NAV SUPERIOR */}
         <header className="w-full">
-          <div className="w-full max-w-6xl mx-auto px-6 flex items-center justify-between gap-6">
-            {/* LOGO */}
-            <Link
-              href="/"
-              className="text-xs tracking-[0.35em] text-sky-400 uppercase hover:text-sky-300 transition-colors"
-            >
-              V-MOMENTUM-PRO
-            </Link>
-            {/* NAV DESKTOP */}
-            <nav className="hidden md:flex items-center gap-6 text-sm text-slate-200 ml-auto">
-              <Link href="#features" className="hover:text-white transition-colors">
-                Features
-              </Link>
-              <Link href="#pricing" className="hover:text-white transition-colors">
-                Pricing
-              </Link>
+          <div className="flex w-full justify-center">
+            <div className="w-full max-w-6xl mx-4 flex items-center justify-between gap-6">
+              {/* LOGO */}
               <Link
-                href="/login"
-                className="rounded-full border border-slate-500 px-4 py-1 text-xs hover:border-slate-300 hover:text-white transition-colors"
+                href="/"
+                className="text-xs tracking-[0.35em] text-sky-400 uppercase hover:text-sky-300 transition-colors"
               >
-                Log in
+                V-MOMENTUM-PRO
               </Link>
-              <Link
-                href="/app"
-                className="rounded-full bg-gradient-to-r from-[#1B63F2] via-[#4B5CFF] to-[#8B5CFF] px-5 py-1.5 text-xs font-semibold shadow-md hover:brightness-110 transition"
-              >
-                Start for free
-              </Link>
-            </nav>
+              {/* NAV DESKTOP */}
+              <nav className="hidden md:flex items-center gap-6 text-sm text-slate-200 ml-auto">
+                <Link href="#features" className="hover:text-white transition-colors">
+                  Features
+                </Link>
+                <Link href="#pricing" className="hover:text-white transition-colors">
+                  Pricing
+                </Link>
+                <Link
+                  href="/login"
+                  className="rounded-full border border-slate-500 px-4 py-1 text-xs hover:border-slate-300 hover:text-white transition-colors"
+                >
+                  Log in
+                </Link>
+                <Link
+                  href="/app"
+                  className="rounded-full bg-gradient-to-r from-[#1B63F2] via-[#4B5CFF] to-[#8B5CFF] px-5 py-1.5 text-xs font-semibold shadow-md hover:brightness-110 transition"
+                >
+                  Start for free
+                </Link>
+              </nav>
+            </div>
           </div>
         </header>
 
