@@ -71,9 +71,9 @@ export default function LandingPage() {
 
               {/* BLOQUE 2 – TARJETA DE MÉTRICAS */}
               <div className="w-full rounded-3xl bg-black/60 border border-white/40 overflow-hidden">
-                <div className="px-6 py-4 border-b border-white/30 flex items-center justify-between text-xs text-slate-200 uppercase tracking-[0.20em]">
-                  <span>FilamentRank & CamPrices overview</span>
-                  <span>Last 7 days</span>
+                <div className="flex items-center justify-between px-4 pt-3 pb-2 text-xs sm:text-[0.75rem] tracking-[0.25em] text-slate-200 uppercase border-b border-white/30">
+                  <span>FilamentRank &amp; CamPrices overview</span>
+                  <span>LAST 7 DAYS</span>
                 </div>
                 <div className="px-6 pt-4 pb-6 space-y-4 bg-black/40">
                   {/* Métricas de cabecera */}
@@ -159,7 +159,7 @@ export default function LandingPage() {
                       $0
                     </p>
                     <p className="mt-2 text-center text-sm text-vm-textMuted">
-                      Up to 2 websites. Basic analytics. 7-day data retention.
+                      Up to 1 websites. Basic analytics. 7-day data retention.
                     </p>
                     <ul className="mt-4 space-y-1 text-sm text-vm-textMuted">
                       <li>✓ 2 websites included</li>
