@@ -27,35 +27,54 @@ export default function LandingPage() {
           </nav>
         </header>
 
-        {/* HERO + DASHBOARD PREVIEW */}
-        <section className="flex flex-col gap-6 items-center text-center w-full">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-xs font-semibold tracking-[0.25em] text-vm-accent uppercase">
-              Analytics & insights
-            </p>
-            <h1 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-vm-textMain">
-              Run your websites on one intelligent platform.
-            </h1>
-            <p className="mt-4 text-base sm:text-lg text-vm-textMuted max-w-2xl">
-              V-Momentum-Pro unifica tráfico, rendimiento de contenido, monetización
-              y salud del sistema en un solo dashboard claro y accionable.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <Link
-                href="/app"
-                className="inline-flex items-center justify-center rounded-full bg-vm-primary px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-vm-primary/40 hover:shadow-vm-primary/60 transition"
-              >
-                Start for free
-              </Link>
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center rounded-full border border-vm-border px-5 py-2.5 text-sm font-medium text-vm-textMain hover:bg-white/5 transition"
-              >
-                Log in
-              </Link>
+        {/* BLOQUE 1 – HERO PRINCIPAL */}
+        <section className="w-full pt-24 pb-16">
+          <div className="w-full max-w-6xl mx-auto px-6">
+            {/* Card exterior con borde de degradado estilo SaaS */}
+            <div className="rounded-[32px] bg-gradient-to-r from-[#1B63F2] via-[#4B5CFF] to-[#8B5CFF] p-[1px] shadow-[0_40px_120px_rgba(0,0,0,0.65)]">
+              {/* Interior oscuro */}
+              <div className="rounded-[30px] bg-[#050819]/95 px-8 py-12 md:px-12 md:py-16 flex flex-col gap-8 items-center text-center md:items-start md:text-left">
+                {/* Etiqueta superior */}
+                <p className="text-xs font-semibold tracking-[0.25em] text-sky-400 uppercase">
+                  Analytics &amp; insights
+                </p>
+
+                {/* Título principal */}
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white">
+                  Run your websites on one intelligent platform.
+                </h1>
+
+                {/* Subtítulo */}
+                <p className="text-base sm:text-lg text-slate-200 max-w-2xl">
+                  V-Momentum-Pro unifica tráfico, rendimiento de contenido, monetización y salud
+                  del sistema en un solo dashboard claro y accionable.
+                </p>
+
+                {/* Botones */}
+                <div className="mt-2 flex flex-wrap items-center justify-center md:justify-start gap-4">
+                  {/* Botón principal */}
+                  <Link
+                    href="/app"
+                    className="inline-flex items-center justify-center rounded-full bg-sky-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-sky-500/40 hover:shadow-sky-500/60 transition"
+                  >
+                    Start for free
+                  </Link>
+
+                  {/* Botón secundario */}
+                  <Link
+                    href="/login"
+                    className="inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2.5 text-sm font-medium text-white hover:bg-white/5 transition"
+                  >
+                    Log in
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
+        {/* HERO + DASHBOARD PREVIEW */}
+        <section className="flex flex-col gap-6 items-center text-center w-full">
           {/* Tarjeta grande del dashboard de ejemplo */}
           <div className="w-full rounded-3xl bg-vm-panel/80 border border-vm-border/70 shadow-[0_20px_60px_rgba(0,0,0,0.45)] overflow-hidden backdrop-blur-md">
             <div className="px-6 py-4 border-b border-vm-border/50 flex items-center justify-between text-xs text-vm-textMuted uppercase tracking-[0.2em]">
