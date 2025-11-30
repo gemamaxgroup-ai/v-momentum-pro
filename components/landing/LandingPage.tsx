@@ -7,24 +7,26 @@ export default function LandingPage() {
     <div className="w-full text-white">
       <div className="w-full px-6 pt-28 pb-28 flex flex-col gap-10">
         {/* NAV SUPERIOR */}
-        <header className="flex items-center justify-between gap-4">
-          <Link href="/" className="text-xs tracking-[0.35em] text-sky-400 uppercase hover:text-sky-300 transition-colors">
-            V-MOMENTUM-PRO
-          </Link>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-slate-200">
-            <Link href="#features" className="hover:text-white transition-colors">
-              Features
+        <header className="w-full">
+          <div className="w-full max-w-6xl mx-auto px-6 flex items-center justify-between gap-6">
+            <Link href="/" className="text-xs tracking-[0.35em] text-sky-400 uppercase hover:text-sky-300 transition-colors">
+              V-MOMENTUM-PRO
             </Link>
-            <Link href="#pricing" className="hover:text-white transition-colors">
-              Pricing
-            </Link>
-            <Link href="/login" className="rounded-full border border-slate-500 px-4 py-1 text-xs hover:border-slate-200 transition-colors">
-              Log in
-            </Link>
-            <Link href="/app" className="rounded-full bg-gradient-to-r from-sky-500 to-purple-500 px-4 py-1.5 text-xs font-semibold shadow-md hover:brightness-110 transition">
-              Start for free
-            </Link>
-          </nav>
+            <nav className="hidden md:flex items-center gap-6 text-sm text-slate-200">
+              <Link href="#features" className="hover:text-white transition-colors">
+                Features
+              </Link>
+              <Link href="#pricing" className="hover:text-white transition-colors">
+                Pricing
+              </Link>
+              <Link href="/login" className="rounded-full border border-slate-500 px-4 py-1 text-xs hover:border-slate-200 transition-colors">
+                Log in
+              </Link>
+              <Link href="/app" className="rounded-full bg-gradient-to-r from-sky-500 to-purple-500 px-4 py-1.5 text-xs font-semibold shadow-md hover:brightness-110 transition">
+                Start for free
+              </Link>
+            </nav>
+          </div>
         </header>
 
         {/* BLOQUE 1 Y 2 – HERO + TARJETA DE MÉTRICAS */}
@@ -207,10 +209,12 @@ export default function LandingPage() {
         </section>
 
         {/* Footer */}
-        <footer className="pt-8 border-t border-vm-border/50">
-          <p className="text-center text-vm-textMuted text-sm">
-            © 2025 V-Momentum-Pro. All rights reserved.
-          </p>
+        <footer className="w-full border-t border-vm-border/40 mt-16">
+          <div className="w-full max-w-6xl mx-auto px-6 py-6">
+            <p className="text-center text-xs text-vm-textMuted">
+              © 2025 V-Momentum-Pro. All rights reserved.
+            </p>
+          </div>
         </footer>
       </div>
     </div>
