@@ -63,8 +63,7 @@ export default function LandingPage() {
 
                   {/* Subtítulo */}
                   <p className="text-base sm:text-lg text-slate-200 max-w-2xl">
-                    V-Momentum-Pro unifica tráfico, rendimiento de contenido, monetización y salud
-                    del sistema en un solo dashboard claro y accionable.
+                    V-Momentum-Pro unifies traffic, content performance, monetization, and system health into a single clear and actionable dashboard.
                   </p>
                 </div>
               </div>
@@ -162,7 +161,7 @@ export default function LandingPage() {
                       Up to 1 websites. Basic analytics. 7-day data retention.
                     </p>
                     <ul className="mt-4 space-y-1 text-sm text-vm-textMuted">
-                      <li>✓ 2 websites included</li>
+                      <li>✓ 1 websites included</li>
                       <li>✓ Basic analytics</li>
                       <li>✓ 7-day data retention</li>
                     </ul>
