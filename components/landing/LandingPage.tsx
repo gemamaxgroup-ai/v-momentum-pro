@@ -28,7 +28,7 @@ export default function LandingPage() {
         </header>
 
         {/* HERO + DASHBOARD PREVIEW */}
-        <section className="flex flex-col gap-10 items-center text-center w-full">
+        <section className="flex flex-col gap-6 items-center text-center w-full">
           <div className="max-w-4xl mx-auto">
             <p className="text-xs font-semibold tracking-[0.25em] text-vm-accent uppercase">
               Analytics & insights
