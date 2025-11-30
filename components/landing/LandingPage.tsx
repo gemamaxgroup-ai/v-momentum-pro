@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#04021a] via-[#050819] to-[#000000] text-white">
-      <div className="w-full max-w-6xl mx-auto px-6 py-10 flex flex-col gap-10">
+      <div className="w-full max-w-7xl mx-auto px-6 pt-28 pb-20 flex flex-col gap-10">
         {/* NAV SUPERIOR */}
         <header className="flex items-center justify-between gap-4">
           <Link href="/" className="text-xs tracking-[0.35em] text-sky-400 uppercase hover:text-sky-300 transition-colors">
@@ -28,8 +28,8 @@ export default function LandingPage() {
         </header>
 
         {/* HERO + DASHBOARD PREVIEW */}
-        <section className="flex flex-col gap-6">
-          <div className="max-w-4xl">
+        <section className="flex flex-col gap-6 items-center text-center">
+          <div className="max-w-4xl mx-auto">
             <p className="text-xs font-semibold tracking-[0.25em] text-vm-accent uppercase">
               Analytics & insights
             </p>
