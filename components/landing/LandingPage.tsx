@@ -141,7 +141,7 @@ export default function LandingPage() {
             <div className="w-full max-w-6xl mx-4">
               <div className="text-center">
                 <h2 className="text-2xl sm:text-3xl font-semibold text-vm-textMain">
-                  Simple pricing
+                  Simple Pricing
                 </h2>
                 <p className="mt-2 text-sm text-vm-textMuted">
                   Choose the plan that fits your needs. Start free and scale as you grow.
@@ -155,10 +155,9 @@ export default function LandingPage() {
                     flex flex-col justify-between
                     h-full
                     rounded-3xl
-                    border border-white/20
-                    bg-gradient-to-br from-[#050816] via-[#080C24] to-[#151B3D]
+                    bg-gradient-to-r from-[#1A74FF] to-[#C869FF]
                     px-8 py-8
-                    shadow-[0_0_40px_rgba(26,116,255,0.18)]
+                    shadow-[0_0_45px_rgba(200,105,255,0.35)]
                     text-white
                   "
                 >
