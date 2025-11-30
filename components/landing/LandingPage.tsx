@@ -212,10 +212,12 @@ export default function LandingPage() {
 
         {/* Footer */}
         <footer className="w-full border-t border-white/15 mt-16">
-          <div className="w-full max-w-6xl mx-auto px-6 py-6">
-            <p className="text-center text-xs text-slate-400">
-              © 2025 V-Momentum-Pro. All rights reserved.
-            </p>
+          <div className="flex w-full justify-center">
+            <div className="w-full max-w-6xl mx-4 py-6">
+              <p className="text-center text-xs text-slate-400">
+                © 2025 V-Momentum-Pro. All rights reserved.
+              </p>
+            </div>
           </div>
         </footer>
       </div>
