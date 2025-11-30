@@ -70,7 +70,7 @@ export default function LandingPage() {
 
               {/* BLOQUE 2 – TARJETA DE MÉTRICAS */}
               <div className="w-full rounded-3xl bg-black/60 border border-white/40 overflow-hidden">
-                <div className="flex items-center justify-between px-4 pt-3 pb-2 text-xs sm:text-[0.75rem] tracking-[0.25em] text-white font-semibold uppercase border-b border-white/30">
+                <div className="flex items-center justify-between px-6 pt-3 pb-2 text-xs sm:text-[0.75rem] tracking-[0.25em] text-white font-semibold uppercase border-b border-white/30">
                   <span>FilamentRank &amp; CamPrices overview</span>
                   <span>LAST 7 DAYS</span>
                 </div>
